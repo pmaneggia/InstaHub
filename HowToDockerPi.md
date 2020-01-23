@@ -1,4 +1,4 @@
-How to setup InstaHub to run in a Docker Container on a Raspberry Pi
+How to setup InstaHub to run in a Docker Container on a Raspberry Pi WIP!!!
 ====================================================================
 
 Prerequisites
