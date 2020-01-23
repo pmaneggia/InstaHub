@@ -49,6 +49,41 @@ Steps to setup InstaHub with Docker
   
    (the current directory `$PWD` gets mounted as `/app`, which is what `composer` expects)
   
-7. Copy the `.env.example` file to `.env` and change the following in the new file  
+7. Copy the `.env.example` file to `.env` and change the following in the new file:
+
+       APP_ENV=production (In test Teacher will be activated automatically.)
+       APP_DEBUG=false - enable only temporarily for debugging!
+       DB_USERNAME=instahub
+       DB_PASSWORD=testpsw
+       MAIL_* - mail provider for notification of new teachers and resetting passworts (admin accounts may reset passworts without sending a mail)
+       DB_HOST name is "db" (the name given in docker run --name in item 3)
+       
+8. Download and start a container with apache and php:
+
+        docker run --network instahubnet -d --name apache -it --rm -v $PWD:/var/www/html -p80:80 php:7.3.1-apache
+
+9. Start a bash in this container (here named `apache`):
+
+        docker exec -it apache bash
+       
+  * In here
+  
+        chmod -R www-data storage
+        chmod -R www-data bootstrap/cache
+        
+    to give write access to Apache to the relative directories and
+    
+        docker-php-ext-install pdo_mysql (php driver to talk to mysql)
+        
+    furthermore, still here in the apache container
+    
+        php artisan config:clear (possibly)
+        php artisan key:generate
+        php artisan migrate
+        php artisan migrate --path=/database/migrations/users
+       
+    now it should be already possible to see the application under `localhost/public
+    
+10. Configure your top-level domain and all subdomains (wildcard) to point to the public directory <TODO how precisely>
 
   
