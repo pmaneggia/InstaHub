@@ -1,0 +1,5 @@
+How to setup InstaHub to run in a Docker Container on a Raspberry Pi
+====================================================================
+
+1. Prerequisites: You have installed an up to date version of raspbian from https://www.raspberrypi.org/downloads/raspbian/
+The Raspbian Buster Lite is enough, if you are ok with connecting to the Pi via ssh and work with a terminal. (To setup ssh and Etherner or Wlan connection consult https://www.raspberrypi.org
