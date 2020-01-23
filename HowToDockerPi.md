@@ -27,7 +27,7 @@ Now it should be possible to run the docker hello world:
 
     docker run hello-world
 
-Notice: since we are working on a Rasberry Pi with OS Raspbian, we need docker images for the arm32 architecture, to be found here `https://hub.docker.com/u/arm32v7`.
+Notice: since we are working on a Rasberry Pi with OS Raspbian, we need docker images for the arm32 architecture `https://hub.docker.com/u/arm32v7`.
 
 Set up InstaHub
 ---------------
@@ -36,13 +36,13 @@ Set up InstaHub
 
         docker network create instahubnet
 
-2. Now we need to install an image of mysql for the arm architecture of the Pi, setting the root user password to, for example, `testpsw`:
+2. Now we need to install an image of mysql for arm32v7, setting the root user password (here to `testpsw`):
 
         docker run -d  --network instahubnet --name db -e MYSQL_ROOT_PASSWORD=testpsw biarms/mysql:5.5
         
-   This downloads the image and starts the container.
+   This downloads the image and starts mysql in a container (here named `mysql`).
 
-3. Open a bash in the db container and configure the database as in the InstaHub tutorial:
+3. Open a bash in the db container and configure the database:
 
         docker exec -it db bash       
         
@@ -50,7 +50,7 @@ Set up InstaHub
   
             mysql -u root -p
         
-    * type the password (hier: `testpws`)
+    * type the password (here: `testpws`)
   
     * create a database named `instahub` and a user named `instahub` granting this user all privileges with:
   
