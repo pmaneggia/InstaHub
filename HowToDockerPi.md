@@ -31,24 +31,24 @@ Steps to setup InstaHub with Docker
         
     * type the password (hier: `testpws`)
   
-    * create a database named instahub and a user named instahub granting this user all privileges with:
+    * create a database named `instahub` and a user named `instahub` granting this user all privileges with:
   
             create database instahub character set utf8 collate utf8_general_ci;
             create user 'instahub' identified by 'testpsw';
             grant all on *.* to instahub;
 
-5. Back outside the container (<quit> quits mysql, ctrl-d the bash in the container) clone the instahub repository with
+5. Back outside the container (`quit` quits mysql, `ctrl-d` the bash in the container) clone the instahub repository with
   
         git clone git://github.com/wi-wissen/instahub.git
     
    and cd (change directory) into the so created instahub folder.
   
-6. Install and run composer with:
+6. Install and run `composer` with:
 
         docker run --rm -it --volume $PWD:/app composer install
   
-   (the current directory $PWD gets mounted as /app, which is what composer expects)
+   (the current directory `$PWD` gets mounted as `/app`, which is what `composer` expects)
   
-7. Copy the .env file to .env and change the following in the new file  
+7. Copy the `.env.example` file to `.env` and change the following in the new file  
 
   
